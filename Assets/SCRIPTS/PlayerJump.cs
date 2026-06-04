@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem; 
-using System.Collections; // Obrigatório para usar Coroutines!
+using System.Collections; 
 
 public class PlayerJump : MonoBehaviour
 {
@@ -86,7 +86,23 @@ public class PlayerJump : MonoBehaviour
     }
     public void ReiniciarJogo()
     {
+        // Avisa o menu para não aparecer desta vez
+        MainMenu.devePularMenu = true;
+
         Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // Essa função será chamada pelo botão "VOLTAR AO MENU"
+    public void VoltarAoMenuInicial()
+    {
+        // Avisa o menu para APARECER novamente ao recarregar a cena
+        MainMenu.devePularMenu = false;
+
+        // Volta o tempo ao normal para o Unity conseguir recarregar a cena sem travar
+        Time.timeScale = 1f;
+
+        // Recarrega a mesma cena (mas agora o menu vai abrir!)
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
