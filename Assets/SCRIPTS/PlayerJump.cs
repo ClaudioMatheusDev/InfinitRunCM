@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Trazendo o Novo Sistema de Input de volta!
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem; 
 
 public class PlayerJump : MonoBehaviour
 {
@@ -42,6 +43,19 @@ public class PlayerJump : MonoBehaviour
             
             // Avisa o Animator que o pulo acabou (Falso) e volta a correr
             anim.SetBool("isJumping", false); 
+        }
+    }
+
+    // Detecta colisões com objetos que estão com "Is Trigger" marcado
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Se o que nos tocou tiver a Tag Obstacle
+        if (collision.CompareTag("Obstacle"))
+        {
+            Debug.Log("Game Over! Batemos no obstáculo.");
+            
+            // Reinicia a cena atual para começar de novo
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
