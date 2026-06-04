@@ -11,6 +11,10 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+    [Header("Configurações de Game Over")]
+    // Espaço para arrastar a sua "TelaGameOver" no Inspector
+    public GameObject telaGameOver; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,8 +58,24 @@ public class PlayerJump : MonoBehaviour
         {
             Debug.Log("Game Over! Batemos no obstáculo.");
             
-            // Reinicia a cena atual para começar de novo
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // 1. Ativa o painel de Game Over na tela
+            if (telaGameOver != null)
+            {
+                telaGameOver.SetActive(true);
+            }
+
+            // 2. Trava o tempo do jogo (tudo para de se mover!)
+            Time.timeScale = 0f;
         }
+    }
+
+    // Essa função será chamada pelo botão "JOGAR DE NOVO"
+    public void ReiniciarJogo()
+    {
+        // 1. Volta o tempo do jogo ao normal
+        Time.timeScale = 1f;
+
+        // 2. Recarrega a fase do zero
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
