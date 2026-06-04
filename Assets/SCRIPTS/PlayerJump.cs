@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem; 
+using System.Collections; // Obrigatório para usar Coroutines!
 
 public class PlayerJump : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class PlayerJump : MonoBehaviour
     private bool isGrounded = true; 
     private Rigidbody2D rb;
     private Animator anim;
+    private bool estaMorto = false; // Evita bugs de bater duas vezes
 
     [Header("Configurações de Game Over")]
-    // Espaço para arrastar a sua "TelaGameOver" no Inspector
     public GameObject telaGameOver; 
 
     void Start()
@@ -23,8 +24,8 @@ public class PlayerJump : MonoBehaviour
 
     void Update()
     {
-        // Verifica o teclado no Sistema Novo e se o personagem está no chão
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+        // Só pula se não estiver morto
+        if (!estaMorto && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
             Pular();
         }
@@ -34,8 +35,6 @@ public class PlayerJump : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         isGrounded = false; 
-        
-        // Avisa o Animator que o pulo começou (Verdadeiro)
         anim.SetBool("isJumping", true); 
     }
 
@@ -44,38 +43,50 @@ public class PlayerJump : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true; 
-            
-            // Avisa o Animator que o pulo acabou (Falso) e volta a correr
             anim.SetBool("isJumping", false); 
         }
     }
 
-    // Detecta colisões com objetos que estão com "Is Trigger" marcado
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Se o que nos tocou tiver a Tag Obstacle
-        if (collision.CompareTag("Obstacle"))
+        // Se bater no obstáculo e ainda não estiver processando a morte
+        if (collision.CompareTag("Obstacle") && !estaMorto)
         {
-            Debug.Log("Game Over! Batemos no obstáculo.");
-            
-            // 1. Ativa o painel de Game Over na tela
-            if (telaGameOver != null)
-            {
-                telaGameOver.SetActive(true);
-            }
-
-            // 2. Trava o tempo do jogo (tudo para de se mover!)
-            Time.timeScale = 0f;
+            StartCoroutine(SequenciaMorte());
         }
     }
 
-    // Essa função será chamada pelo botão "JOGAR DE NOVO"
+    // Processo que espera a animação acontecer ANTES de congelar a tela
+    IEnumerator SequenciaMorte()
+    {
+        estaMorto = true;
+        Debug.Log("Game Over! Iniciando animação de derrota.");
+        
+        // EM VEZ DE DESLIGAR O COLISOR, vamos mudar a Layer do Player!
+        // Isso faz ele ignorar os obstáculos, mas CONTINUAR colidindo com o Ground.
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); 
+        // Nota: Se você não tiver configurado matriz de colisão, mudar para Ignore Raycast 
+        // ou simplesmente desativar o script do Spawner de obstáculos resolve.
+
+        // Garante que ele pare de correr para frente no cenário
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        // Avisa o Animator para tocar o estado de derrota
+        anim.SetTrigger("isDead"); 
+
+        // Espera 1 segundo para o jogador ver o tombo na tela
+        yield return new WaitForSeconds(1f);
+
+        // Ativa o painel e congela o tempo de verdade
+        if (telaGameOver != null)
+        {
+            telaGameOver.SetActive(true);
+        }
+        Time.timeScale = 0f;
+    }
     public void ReiniciarJogo()
     {
-        // 1. Volta o tempo do jogo ao normal
         Time.timeScale = 1f;
-
-        // 2. Recarrega a fase do zero
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
