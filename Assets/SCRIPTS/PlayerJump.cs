@@ -90,8 +90,6 @@ public class PlayerJump : MonoBehaviour
             scoreManager.SalvarEExibirRecorde();
         }
 
-    Debug.Log("Game Over! Iniciando animação de derrota.");
-        
         // 🎵 Toca o som de derrota!
         if (audioSource != null && somDerrota != null)
         {
