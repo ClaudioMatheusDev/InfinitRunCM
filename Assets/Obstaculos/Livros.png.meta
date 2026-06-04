@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6581ffd3ff3690448a08ff59c0dc1da6
+guid: 3f9e74b6214bc5f45bad45321a9185ec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1741127097455094746
-    second: BackGround2_0
+      213: -7870709355361369842
+    second: Livros_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 2
-    wrapV: 2
-    wrapW: 2
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackGround2_0
+      name: Livros_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1774
-        height: 887
+        x: 19
+        y: 20
+        width: 78
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adb2e98ced9b92810800000000000000
-      internalID: 1741127097455094746
+      spriteID: e018757ca8f95c290800000000000000
+      internalID: -7870709355361369842
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BackGround2_0: 1741127097455094746
+      Livros_0: -7870709355361369842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

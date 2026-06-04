@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c8bdd120f961cdd4ab6c965c9385f469
+guid: b51b8f8e27f837c4ab0bcfe84f2914df
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6732062350558528555
-    second: BackGround1_0
+      213: -8180838471128945460
+    second: Lixeira_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 2
-    wrapV: 2
-    wrapW: 2
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackGround1_0
+      name: Lixeira_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1774
-        height: 887
+        x: 21
+        y: 26
+        width: 51
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2482d23a071d6d50800000000000000
-      internalID: 6732062350558528555
+      spriteID: ccc628321c2d77e80800000000000000
+      internalID: -8180838471128945460
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BackGround1_0: 6732062350558528555
+      Lixeira_0: -8180838471128945460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
