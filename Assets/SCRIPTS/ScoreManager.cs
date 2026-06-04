@@ -1,23 +1,60 @@
 using UnityEngine;
-using TMPro; // LINHA OBRIGATÓRIA para conseguir mexer no TextMeshPro por código
+using TMPro; // Obrigatório para usar TextMeshPro
 
 public class ScoreManager : MonoBehaviour
 {
-    [Header("Componente de Interface")]
-    public TextMeshProUGUI scoreText; // Arrastaremos o nosso texto para cá
+    [Header("Componentes de UI")]
+    public TextMeshProUGUI textoPontosAtuais;
+    public TextMeshProUGUI textoRecordeGameOver; // Texto que ficará dentro do painel de Game Over
 
-    [Header("Configurações")]
-    public float scoreMultiplier = 10f; // Quantos pontos o jogador ganha por segundo
+    private float pontos = 0f;
+    private bool jogoRodando = true;
 
-    private float currentScore = 0f;
+    void Start()
+    {
+        pontos = 0f;
+        jogoRodando = true;
+    }
 
     void Update()
     {
-        // 1. Aumenta a pontuação de acordo com o tempo que passou
-        currentScore += Time.deltaTime * scoreMultiplier;
-
-        // 2. Transforma o número quebrado em inteiro e atualiza o texto na tela
-        int scoreInteiro = Mathf.FloorToInt(currentScore);
-        scoreText.text = "Pontos: " + scoreInteiro.ToString();
+        // Só conta pontos se o jogo não estiver pausado e o jogador estiver vivo
+        if (Time.timeScale > 0f && jogoRodando)
+        {
+            // Ganha 10 pontos por segundo (multiplicado pela velocidade para dar um bônus por correr mais rápido!)
+            pontos += Time.deltaTime * MainMenu.velocidadeAtual;
+            
+            // Atualiza o texto na HUD do jogo
+            if (textoPontosAtuais != null)
+            {
+                textoPontosAtuais.text = "PONTOS: " + Mathf.FloorToInt(pontos).ToString();
+            }
+        }
     }
+
+    // Essa função DEVE ser chamada pelo script do Player no momento exato em que ele bate no obstáculo
+    public void SalvarEExibirRecorde()
+        {
+            // 1. Descobre quantos pontos o jogador fez
+            // (Nota: Se a sua variável de pontos no script tiver outro nome, mude 'pontos' para o nome dela!)
+            int pontuacaoFinal = Mathf.FloorToInt(pontos); 
+
+            // 2. Busca o recorde antigo salvo no computador
+            int recordeSalvo = PlayerPrefs.GetInt("HighScore", 0);
+
+            // 3. Se a pontuação de agora for maior, atualiza o recorde
+            if (pontuacaoFinal > recordeSalvo)
+            {
+                PlayerPrefs.SetInt("HighScore", pontuacaoFinal);
+                PlayerPrefs.Save();
+                recordeSalvo = pontuacaoFinal;
+            }
+
+            // 4. Mostra o recorde no texto da Tela de Game Over
+            // (Certifique-se de criar essa variável 'textoRecordeGameOver' no topo do seu script se não tiver!)
+            if (textoRecordeGameOver != null)
+            {
+                textoRecordeGameOver.text = "RECORDE: " + recordeSalvo;
+            }
+        }
 }

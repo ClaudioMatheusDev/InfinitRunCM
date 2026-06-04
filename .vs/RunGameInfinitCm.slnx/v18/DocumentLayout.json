@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\claud\\Downloads\\RunGame (1)\\RunGame\\RunGame2\\RunGameInfinitCm\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\claud\\downloads\\rungame (1)\\rungame\\rungame2\\rungameinfinitcm\\assets\\scripts\\playerjump.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerjump.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\claud\\downloads\\rungame (1)\\rungame\\rungame2\\rungameinfinitcm\\assets\\scripts\\obstaclemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\obstaclemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +23,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PlayerJump.cs",
+              "DocumentMoniker": "C:\\Users\\claud\\Downloads\\RunGame (1)\\RunGame\\RunGame2\\RunGameInfinitCm\\Assets\\SCRIPTS\\PlayerJump.cs",
+              "RelativeDocumentMoniker": "Assets\\SCRIPTS\\PlayerJump.cs",
+              "ToolTip": "C:\\Users\\claud\\Downloads\\RunGame (1)\\RunGame\\RunGame2\\RunGameInfinitCm\\Assets\\SCRIPTS\\PlayerJump.cs",
+              "RelativeToolTip": "Assets\\SCRIPTS\\PlayerJump.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAFAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-04T18:53:29.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ObstacleMover.cs",
               "DocumentMoniker": "C:\\Users\\claud\\Downloads\\RunGame (1)\\RunGame\\RunGame2\\RunGameInfinitCm\\Assets\\SCRIPTS\\ObstacleMover.cs",
               "RelativeDocumentMoniker": "Assets\\SCRIPTS\\ObstacleMover.cs",

@@ -16,3 +16,4 @@ MemoryCaptures/
 *.booproj
 *.svd
 *.pdb
+.vs/

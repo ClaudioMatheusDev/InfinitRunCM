@@ -73,6 +73,15 @@ public class PlayerJump : MonoBehaviour
     {
         estaMorto = true;
         Debug.Log("Game Over! Iniciando animação de derrota.");
+
+
+        ScoreManager scoreManager = Object.FindFirstObjectByType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.SalvarEExibirRecorde();
+        }
+
+    Debug.Log("Game Over! Iniciando animação de derrota.");
         
         // 🎵 Toca o som de derrota!
         if (audioSource != null && somDerrota != null)
