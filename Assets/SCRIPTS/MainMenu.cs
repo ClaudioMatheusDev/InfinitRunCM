@@ -56,13 +56,22 @@ public class MainMenu : MonoBehaviour
     {
         menuInicial.SetActive(false);
         hudPontuacao.SetActive(true);
-
-        // Garante que a velocidade comece certinha ao clicar no botão também
         velocidadeAtual = velocidadeInicial;
 
         if (obstacleSpawner != null)
         {
             obstacleSpawner.enabled = true;
+        }
+
+        // 🏃 NOVO: Encontra o player e ativa a animação de corrida!
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            Animator anim = player.GetComponent<Animator>();
+            if (anim != null)
+            {
+                anim.SetBool("isRunning", true);
+            }
         }
 
         Time.timeScale = 1f;

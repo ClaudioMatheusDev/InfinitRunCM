@@ -29,6 +29,15 @@ public class PlayerJump : MonoBehaviour
         // Pega o componente de áudio que vamos colocar no Player
         
         audioSource = GetComponent<AudioSource>();
+
+        if (MainMenu.devePularMenu)
+    {
+        Animator anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetBool("isRunning", true);
+        }
+    }
     }
 
     void Update()
